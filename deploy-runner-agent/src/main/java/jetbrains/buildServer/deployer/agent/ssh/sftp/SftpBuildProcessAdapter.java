@@ -39,6 +39,7 @@ public class SftpBuildProcessAdapter extends SyncBuildProcessAdapter implements 
 
   private static final Logger LOG = Logger.getInstance(SftpBuildProcessAdapter.class.getName());
   private final List<ArtifactsCollection> myArtifacts;
+  protected String myHost;
   private SSHSessionProvider mySessionProvider;
 
   public SftpBuildProcessAdapter(@NotNull final BuildRunnerContext context,

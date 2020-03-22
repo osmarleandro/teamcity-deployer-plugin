@@ -57,6 +57,7 @@ public class CargoBuildProcessAdapter extends SyncBuildProcessAdapter {
   private final BuildRunnerContext myContext;
   private final String mySourcePath;
   private final String myContainerType;
+  protected String myHost;
   private boolean myUseHttps = false;
 
   public CargoBuildProcessAdapter(@NotNull String target,

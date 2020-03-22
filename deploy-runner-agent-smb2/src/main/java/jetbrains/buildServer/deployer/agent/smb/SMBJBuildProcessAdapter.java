@@ -64,9 +64,10 @@ public class SMBJBuildProcessAdapter extends SyncBuildProcessAdapter {
   private final String myPassword;
   private final List<ArtifactsCollection> myArtifactsCollections;
   private final String myDomain;
+    protected String myHost;
 
 
-  @SuppressWarnings("unused") // used via reflection
+    @SuppressWarnings("unused") // used via reflection
   public SMBJBuildProcessAdapter(@NotNull final BuildRunnerContext context,
                                  @NotNull final String username,
                                  @NotNull final String password,

@@ -43,9 +43,10 @@ public class ScpProcessAdapter extends SyncBuildProcessAdapter {
   private static final Logger LOG = Logger.getInstance(ScpProcessAdapter.class.getName());
   private final List<ArtifactsCollection> myArtifacts;
   private static final Logger myInternalLog = Logger.getInstance(ScpProcessAdapter.class.getName());
+    protected String myHost;
 
 
-  private SSHSessionProvider mySessionProvider;
+    private SSHSessionProvider mySessionProvider;
 
   public ScpProcessAdapter(@NotNull final BuildRunnerContext context,
                            @NotNull final List<ArtifactsCollection> artifactsCollections,
