@@ -206,7 +206,7 @@ public class SMBJBuildProcessAdapter extends SyncBuildProcessAdapter {
     }
 
     for (Map.Entry<File, String> fileDestEntry : fileFullPathMap.entrySet()) {
-      checkIsInterrupted();
+      checkIsInterruptedRenamed();
 
       final File source = fileDestEntry.getKey();
       final String targetPath = fileDestEntry.getValue().replace('/', '\\');
@@ -247,7 +247,7 @@ public class SMBJBuildProcessAdapter extends SyncBuildProcessAdapter {
     byte[] buf = new byte[STREAM_BUFFER_SIZE];
     int read;
     while ((read = inputStream.read(buf)) > -1) {
-      checkIsInterrupted();
+      checkIsInterruptedRenamed();
       outputStream.write(buf, 0, read);
     }
   }

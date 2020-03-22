@@ -127,7 +127,7 @@ class SSHExecProcessAdapter extends SyncBuildProcessAdapter {
             outputStream.write("\n".getBytes(Charset.forName("UTF-8")));
           }
         } catch (InterruptedException e) {
-          checkIsInterrupted();
+          checkIsInterruptedRenamed();
         }
       }
 

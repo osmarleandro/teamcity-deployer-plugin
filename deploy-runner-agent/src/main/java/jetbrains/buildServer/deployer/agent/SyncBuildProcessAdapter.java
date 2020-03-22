@@ -82,7 +82,7 @@ public abstract class SyncBuildProcessAdapter extends BuildProcessAdapter {
    */
   protected abstract BuildFinishedStatus runProcess();
 
-  protected void checkIsInterrupted() throws UploadInterruptedException {
+  protected void checkIsInterruptedRenamed() throws UploadInterruptedException {
     if (isInterrupted()) throw new UploadInterruptedException();
   }
 

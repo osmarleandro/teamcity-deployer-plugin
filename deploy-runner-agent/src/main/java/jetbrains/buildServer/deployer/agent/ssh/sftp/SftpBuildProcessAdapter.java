@@ -73,7 +73,7 @@ public class SftpBuildProcessAdapter extends SyncBuildProcessAdapter implements 
       for (ArtifactsCollection artifactsCollection : myArtifacts) {
         int count = 0;
         for (Map.Entry<File, String> fileStringEntry : artifactsCollection.getFilePathMap().entrySet()) {
-          checkIsInterrupted();
+          checkIsInterruptedRenamed();
           final File source = fileStringEntry.getKey();
           final String value = fileStringEntry.getValue();
           final String destinationPath = "".equals(value) ? "." : value;
