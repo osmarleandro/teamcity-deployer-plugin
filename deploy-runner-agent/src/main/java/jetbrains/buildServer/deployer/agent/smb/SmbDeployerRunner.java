@@ -23,7 +23,6 @@ import jetbrains.buildServer.agent.*;
 import jetbrains.buildServer.agent.impl.artifacts.ArtifactsBuilder;
 import jetbrains.buildServer.agent.impl.artifacts.ArtifactsCollection;
 import jetbrains.buildServer.agent.plugins.beans.PluginDescriptor;
-import jetbrains.buildServer.deployer.agent.base.BaseDeployerRunner;
 import jetbrains.buildServer.deployer.common.DeployerRunnerConstants;
 import jetbrains.buildServer.deployer.common.SMBRunnerConstants;
 import jetbrains.buildServer.serverSide.TeamCityProperties;
@@ -166,7 +165,9 @@ public class SmbDeployerRunner extends ExtractedClass {
       final Collection<ArtifactsPreprocessor> preprocessors = myExtensionHolder.getExtensions(ArtifactsPreprocessor.class);
 
       final ArtifactsBuilder builder = new ArtifactsBuilder();
-      extracted(runningBuild, sourcePaths, preprocessors, builder);
+      builder.setPreprocessors(preprocessors);
+      builder.setBaseDir(runningBuild.getCheckoutDirectory());
+      builder.setArtifactsPaths(sourcePaths);
 
       final List<ArtifactsCollection> artifactsCollections = builder.build();
 
