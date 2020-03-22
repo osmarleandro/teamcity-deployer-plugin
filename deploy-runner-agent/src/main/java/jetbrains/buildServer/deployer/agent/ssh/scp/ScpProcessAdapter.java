@@ -24,7 +24,6 @@ import jetbrains.buildServer.agent.BuildFinishedStatus;
 import jetbrains.buildServer.agent.BuildRunnerContext;
 import jetbrains.buildServer.agent.impl.artifacts.ArtifactsCollection;
 import jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter;
-import jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter.logBuildProblem;
 import jetbrains.buildServer.deployer.agent.ssh.SSHSessionProvider;
 import jetbrains.buildServer.util.FileUtil;
 import jetbrains.buildServer.util.StringUtil;

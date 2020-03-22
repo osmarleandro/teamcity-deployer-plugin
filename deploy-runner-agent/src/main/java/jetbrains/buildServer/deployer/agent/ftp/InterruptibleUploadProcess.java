@@ -21,7 +21,6 @@ import jetbrains.buildServer.agent.BuildFinishedStatus;
 import jetbrains.buildServer.agent.BuildProgressLogger;
 import jetbrains.buildServer.agent.impl.artifacts.ArtifactsCollection;
 import jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter;
-import jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter.logBuildProblem;
 import jetbrains.buildServer.util.StringUtil;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;

@@ -29,7 +29,6 @@ import jetbrains.buildServer.StreamGobbler;
 import jetbrains.buildServer.agent.BuildFinishedStatus;
 import jetbrains.buildServer.agent.BuildProgressLogger;
 import jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter;
-import jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter.logBuildProblem;
 import jetbrains.buildServer.deployer.common.SSHRunnerConstants;
 import org.jetbrains.annotations.NotNull;
 

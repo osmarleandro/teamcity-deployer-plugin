@@ -21,7 +21,6 @@ import jetbrains.buildServer.agent.BuildFinishedStatus;
 import jetbrains.buildServer.agent.BuildRunnerContext;
 import jetbrains.buildServer.agent.impl.artifacts.ArtifactsCollection;
 import jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter;
-import jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter.logBuildProblem;
 import jetbrains.buildServer.deployer.agent.UploadInterruptedException;
 import jetbrains.buildServer.deployer.common.FTPRunnerConstants;
 import jetbrains.buildServer.util.StringUtil;
