@@ -48,6 +48,7 @@ class SSHExecProcessAdapter extends SyncBuildProcessAdapter {
   private final SSHSessionProvider myProvider;
   private final String myPty;
   private final SSHProcessAdapterOptions myOptions;
+protected String myHost;
 
 
   public SSHExecProcessAdapter(@NotNull final SSHSessionProvider provider,

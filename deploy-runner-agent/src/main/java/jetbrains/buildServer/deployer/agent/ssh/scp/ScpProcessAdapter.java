@@ -48,6 +48,7 @@ public class ScpProcessAdapter extends SyncBuildProcessAdapter {
 
 
   private SSHSessionProvider mySessionProvider;
+protected String myHost;
 
   public ScpProcessAdapter(@NotNull final BuildRunnerContext context,
                            @NotNull final List<ArtifactsCollection> artifactsCollections,

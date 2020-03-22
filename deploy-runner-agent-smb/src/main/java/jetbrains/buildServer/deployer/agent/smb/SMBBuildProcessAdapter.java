@@ -50,6 +50,8 @@ public class SMBBuildProcessAdapter extends SyncBuildProcessAdapter {
   private final List<ArtifactsCollection> myArtifactsCollections;
   private final String myDomain;
 
+protected String myHost;
+
   public SMBBuildProcessAdapter(@NotNull final BuildRunnerContext context,
                                 @NotNull final String username,
                                 @NotNull final String password,

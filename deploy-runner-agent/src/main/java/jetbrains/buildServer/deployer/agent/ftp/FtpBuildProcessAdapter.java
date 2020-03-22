@@ -60,6 +60,8 @@ class FtpBuildProcessAdapter extends SyncBuildProcessAdapter {
   private final boolean myIsActive;
   private FtpConnectTimeout myFtpConnectTimeout;
 
+protected String myHost;
+
   public FtpBuildProcessAdapter(@NotNull final BuildRunnerContext context,
                                 @NotNull final String target,
                                 @NotNull final String username,

@@ -34,10 +34,7 @@ protected final BuildProgressLogger myLogger;
   private volatile boolean hasFinished;
   private volatile BuildFinishedStatus statusCode;
   private volatile boolean isInterrupted;
-protected String myHost;
-
-
-  public SyncBuildProcessAdapter(@NotNull final BuildProgressLogger logger) {
+public SyncBuildProcessAdapter(@NotNull final BuildProgressLogger logger) {
     myLogger = logger;
     hasFinished = false;
     statusCode = null;
