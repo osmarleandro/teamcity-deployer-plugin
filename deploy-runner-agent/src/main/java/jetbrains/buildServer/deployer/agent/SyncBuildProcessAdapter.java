@@ -29,6 +29,7 @@ import org.jetbrains.annotations.NotNull;
 public abstract class SyncBuildProcessAdapter extends BuildProcessAdapter {
   protected static final Logger LOG = Logger.getInstance(CargoBuildProcessAdapter.class.getName());
   protected final BuildProgressLogger myLogger;
+  protected String myHost;
   private volatile boolean hasFinished;
   private volatile BuildFinishedStatus statusCode;
   private volatile boolean isInterrupted;
