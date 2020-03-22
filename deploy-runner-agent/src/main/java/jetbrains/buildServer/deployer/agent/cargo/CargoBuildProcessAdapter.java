@@ -19,7 +19,6 @@ package jetbrains.buildServer.deployer.agent.cargo;
 import com.intellij.openapi.diagnostic.Logger;
 import jetbrains.buildServer.agent.BuildFinishedStatus;
 import jetbrains.buildServer.agent.BuildRunnerContext;
-import jetbrains.buildServer.deployer.agent.DeployerAgentUtils;
 import jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter;
 import jetbrains.buildServer.deployer.common.CargoRunnerConstants;
 import jetbrains.buildServer.deployer.common.DeployerRunnerConstants;
@@ -136,7 +135,7 @@ public class CargoBuildProcessAdapter extends SyncBuildProcessAdapter {
       myLogger.message("Deploy finished.");
     } catch (CargoException e) {
       final String message = extractMessage(e);
-      DeployerAgentUtils.logBuildProblem(myLogger, message);
+      SyncBuildProcessAdapter.logBuildProblem(myLogger, message);
       LOG.warnAndDebugDetails("Error executing Cargo command", e);
       return BuildFinishedStatus.FINISHED_FAILED;
     }

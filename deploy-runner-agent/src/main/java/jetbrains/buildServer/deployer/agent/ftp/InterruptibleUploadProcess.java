@@ -37,7 +37,7 @@ import java.util.Set;
 import java.util.StringTokenizer;
 import java.util.concurrent.atomic.AtomicReference;
 
-import static jetbrains.buildServer.deployer.agent.DeployerAgentUtils.logBuildProblem;
+import static jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter.logBuildProblem;
 import static jetbrains.buildServer.util.FileUtil.getExtension;
 
 /**

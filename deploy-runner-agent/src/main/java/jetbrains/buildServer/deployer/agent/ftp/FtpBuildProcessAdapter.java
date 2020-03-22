@@ -39,8 +39,6 @@ import java.net.URLDecoder;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
-import static jetbrains.buildServer.deployer.agent.DeployerAgentUtils.logBuildProblem;
-
 
 class FtpBuildProcessAdapter extends SyncBuildProcessAdapter {
   private static final String FTP_PROTOCOL = "ftp://";

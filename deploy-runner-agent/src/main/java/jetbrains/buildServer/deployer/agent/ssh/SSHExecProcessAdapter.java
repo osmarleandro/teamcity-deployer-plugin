@@ -36,8 +36,6 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.concurrent.atomic.AtomicLong;
 
-import static jetbrains.buildServer.deployer.agent.DeployerAgentUtils.logBuildProblem;
-
 
 class SSHExecProcessAdapter extends SyncBuildProcessAdapter {
 
