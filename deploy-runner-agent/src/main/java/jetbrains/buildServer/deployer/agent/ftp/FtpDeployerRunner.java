@@ -90,12 +90,4 @@ public BuildProcess createBuildProcess(@NotNull final AgentRunningBuild runningB
   }
 
 
-private void extracted(final AgentRunningBuild runningBuild, final String sourcePaths,
-		final Collection<ArtifactsPreprocessor> preprocessors, final ArtifactsBuilder builder) {
-	builder.setPreprocessors(preprocessors);
-    builder.setBaseDir(runningBuild.getCheckoutDirectory());
-    builder.setArtifactsPaths(sourcePaths);
-}
-
-
 }

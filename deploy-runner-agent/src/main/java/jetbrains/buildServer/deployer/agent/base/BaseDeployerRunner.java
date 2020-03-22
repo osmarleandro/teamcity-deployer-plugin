@@ -19,10 +19,12 @@ package jetbrains.buildServer.deployer.agent.base;
 import jetbrains.buildServer.ExtensionHolder;
 import jetbrains.buildServer.RunBuildException;
 import jetbrains.buildServer.agent.*;
+import jetbrains.buildServer.agent.impl.artifacts.ArtifactsBuilder;
 import jetbrains.buildServer.agent.impl.artifacts.ArtifactsCollection;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -45,4 +47,10 @@ public abstract class BaseDeployerRunner implements AgentBuildRunner {
   @NotNull
   @Override
   public abstract AgentBuildRunnerInfo getRunnerInfo();
+
+protected void extracted(final AgentRunningBuild runningBuild, final String sourcePaths, final Collection<ArtifactsPreprocessor> preprocessors, final ArtifactsBuilder builder) {
+	builder.setPreprocessors(preprocessors);
+    builder.setBaseDir(runningBuild.getCheckoutDirectory());
+    builder.setArtifactsPaths(sourcePaths);
+}
 }
