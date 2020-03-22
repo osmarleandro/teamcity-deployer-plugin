@@ -31,9 +31,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-public class FtpDeployerRunner extends BaseDeployerRunner {
+public class FtpDeployerRunnerRenamed extends BaseDeployerRunner {
 
-  public FtpDeployerRunner(@NotNull final ExtensionHolder extensionHolder) {
+  public FtpDeployerRunnerRenamed(@NotNull final ExtensionHolder extensionHolder) {
     super(extensionHolder);
   }
 
