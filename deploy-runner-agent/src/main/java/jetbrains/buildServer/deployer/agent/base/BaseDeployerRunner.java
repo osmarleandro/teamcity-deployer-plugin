@@ -47,10 +47,4 @@ public abstract class BaseDeployerRunner implements AgentBuildRunner {
   @NotNull
   @Override
   public abstract AgentBuildRunnerInfo getRunnerInfo();
-
-protected void extracted(final AgentRunningBuild runningBuild, final String sourcePaths, final Collection<ArtifactsPreprocessor> preprocessors, final ArtifactsBuilder builder) {
-	builder.setPreprocessors(preprocessors);
-    builder.setBaseDir(runningBuild.getCheckoutDirectory());
-    builder.setArtifactsPaths(sourcePaths);
-}
 }
