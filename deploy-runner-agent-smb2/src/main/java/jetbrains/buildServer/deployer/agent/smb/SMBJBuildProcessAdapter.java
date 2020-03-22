@@ -51,7 +51,7 @@ import java.util.Map;
 import java.util.Stack;
 
 import static com.hierynomus.mssmb2.SMB2CreateDisposition.FILE_OVERWRITE_IF;
-import static jetbrains.buildServer.deployer.agent.DeployerAgentUtils.logBuildProblem;
+import static jetbrains.buildServer.deployer.DeployerAgentUtils.logBuildProblem;
 
 
 @SuppressWarnings("unused") // used via reflection

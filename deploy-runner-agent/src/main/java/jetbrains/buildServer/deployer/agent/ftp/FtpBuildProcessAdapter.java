@@ -32,14 +32,15 @@ import org.apache.commons.net.util.TrustManagerUtils;
 import org.jetbrains.annotations.NotNull;
 
 import javax.net.ssl.SSLException;
+
+import static jetbrains.buildServer.deployer.DeployerAgentUtils.logBuildProblem;
+
 import java.io.IOException;
 import java.net.SocketException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
-
-import static jetbrains.buildServer.deployer.agent.DeployerAgentUtils.logBuildProblem;
 
 
 class FtpBuildProcessAdapter extends SyncBuildProcessAdapter {

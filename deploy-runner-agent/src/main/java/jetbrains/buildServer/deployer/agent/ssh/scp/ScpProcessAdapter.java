@@ -29,6 +29,8 @@ import jetbrains.buildServer.util.FileUtil;
 import jetbrains.buildServer.util.StringUtil;
 import org.jetbrains.annotations.NotNull;
 
+import static jetbrains.buildServer.deployer.DeployerAgentUtils.logBuildProblem;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,8 +39,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
-import static jetbrains.buildServer.deployer.agent.DeployerAgentUtils.logBuildProblem;
 
 public class ScpProcessAdapter extends SyncBuildProcessAdapter {
 

@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-package jetbrains.buildServer.deployer.agent;
+package jetbrains.buildServer.deployer;
 
 import jetbrains.buildServer.agent.BuildProgressLogger;
+import jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter;
 
 public class DeployerAgentUtils {
   /**

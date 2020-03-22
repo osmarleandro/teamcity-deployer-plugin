@@ -32,11 +32,11 @@ import jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter;
 import jetbrains.buildServer.deployer.common.SSHRunnerConstants;
 import org.jetbrains.annotations.NotNull;
 
+import static jetbrains.buildServer.deployer.DeployerAgentUtils.logBuildProblem;
+
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.concurrent.atomic.AtomicLong;
-
-import static jetbrains.buildServer.deployer.agent.DeployerAgentUtils.logBuildProblem;
 
 
 class SSHExecProcessAdapter extends SyncBuildProcessAdapter {
