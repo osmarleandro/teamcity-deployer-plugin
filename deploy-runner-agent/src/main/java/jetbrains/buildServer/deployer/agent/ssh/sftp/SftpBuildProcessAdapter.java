@@ -36,7 +36,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class SftpBuildProcessAdapter extends SyncBuildProcessAdapter {
+public class SftpBuildProcessAdapter extends SyncBuildProcessAdapter implements ExtractedInterface {
 
   private static final Logger LOG = Logger.getInstance(SftpBuildProcessAdapter.class.getName());
   private final List<ArtifactsCollection> myArtifacts;
