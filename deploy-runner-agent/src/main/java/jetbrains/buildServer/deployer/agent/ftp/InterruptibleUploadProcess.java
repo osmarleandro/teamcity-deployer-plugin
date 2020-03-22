@@ -20,6 +20,8 @@ import com.intellij.openapi.diagnostic.Logger;
 import jetbrains.buildServer.agent.BuildFinishedStatus;
 import jetbrains.buildServer.agent.BuildProgressLogger;
 import jetbrains.buildServer.agent.impl.artifacts.ArtifactsCollection;
+import jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter;
+import jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter.logBuildProblem;
 import jetbrains.buildServer.util.StringUtil;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
@@ -131,11 +133,11 @@ abstract class InterruptibleUploadProcess implements Runnable {
       }
       myFinishStatus.set(BuildFinishedStatus.FINISHED_SUCCESS);
     } catch (FailureDetectedException t) {
-      logBuildProblem(myLogger, t.getMessage());
+      SyncBuildProcessAdapter.logBuildProblem(myLogger, t.getMessage());
       LOG.debug(t.getMessage(), t);
       myFinishStatus.set(BuildFinishedStatus.FINISHED_FAILED);
     } catch (IOException t) {
-      logBuildProblem(myLogger, t.getMessage());
+      SyncBuildProcessAdapter.logBuildProblem(myLogger, t.getMessage());
       LOG.debug(t.getMessage(), t);
       myFinishStatus.set(BuildFinishedStatus.FINISHED_FAILED);
     }

@@ -29,6 +29,7 @@ import jetbrains.buildServer.StreamGobbler;
 import jetbrains.buildServer.agent.BuildFinishedStatus;
 import jetbrains.buildServer.agent.BuildProgressLogger;
 import jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter;
+import jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter.logBuildProblem;
 import jetbrains.buildServer.deployer.common.SSHRunnerConstants;
 import org.jetbrains.annotations.NotNull;
 
@@ -71,7 +72,7 @@ class SSHExecProcessAdapter extends SyncBuildProcessAdapter {
       session = myProvider.getSession();
       return executeCommand(session, myPty, myCommands);
     } catch (JSchException e) {
-      logBuildProblem(myLogger, e.getMessage());
+      SyncBuildProcessAdapter.logBuildProblem(myLogger, e.getMessage());
       LOG.warnAndDebugDetails("Error executing SSH command", e);
       return BuildFinishedStatus.FINISHED_FAILED;
     } finally {
@@ -156,7 +157,7 @@ class SSHExecProcessAdapter extends SyncBuildProcessAdapter {
             logExitCodeBuildProblem(exitCode);
             result = BuildFinishedStatus.FINISHED_WITH_PROBLEMS;
           } else {
-            logBuildProblem(myLogger, "SSH exit-code [" + exitCode + "]");
+            SyncBuildProcessAdapter.logBuildProblem(myLogger, "SSH exit-code [" + exitCode + "]");
           }
         } else {
           myLogger.message("SSH exit-code [" + exitCode + "]");

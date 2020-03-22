@@ -21,6 +21,7 @@ import jetbrains.buildServer.agent.BuildFinishedStatus;
 import jetbrains.buildServer.agent.BuildRunnerContext;
 import jetbrains.buildServer.agent.impl.artifacts.ArtifactsCollection;
 import jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter;
+import jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter.logBuildProblem;
 import jetbrains.buildServer.deployer.agent.UploadInterruptedException;
 import jetbrains.buildServer.deployer.common.FTPRunnerConstants;
 import jetbrains.buildServer.util.StringUtil;
@@ -142,7 +143,7 @@ class FtpBuildProcessAdapter extends SyncBuildProcessAdapter {
 
       final boolean loginSuccessful = client.login(myUsername, myPassword);
       if (!loginSuccessful) {
-        logBuildProblem(myLogger, "Failed to login. Reply was: " + client.getReplyString());
+        SyncBuildProcessAdapter.logBuildProblem(myLogger, "Failed to login. Reply was: " + client.getReplyString());
         return BuildFinishedStatus.FINISHED_FAILED;
       }
 
@@ -203,13 +204,13 @@ class FtpBuildProcessAdapter extends SyncBuildProcessAdapter {
       return BuildFinishedStatus.FINISHED_FAILED;
     } catch (SSLException e) {
       if (e.getMessage().contains("unable to find valid certification path to requested target")) {
-        logBuildProblem(myLogger,"Failed to setup SSL connection. Looks like target's certificate is not trusted.\n" +
+        SyncBuildProcessAdapter.logBuildProblem(myLogger,"Failed to setup SSL connection. Looks like target's certificate is not trusted.\n" +
             "See Oracle's documentation on how to import the certificate as a Trusted Certificate.");
       }
       LOG.warnAndDebugDetails("SSL error executing FTP command", e);
       return BuildFinishedStatus.FINISHED_FAILED;
     } catch (IOException e) {
-      logBuildProblem(myLogger, e.getMessage());
+      SyncBuildProcessAdapter.logBuildProblem(myLogger, e.getMessage());
       LOG.warnAndDebugDetails("Error executing FTP command", e);
       return BuildFinishedStatus.FINISHED_FAILED;
     } finally {

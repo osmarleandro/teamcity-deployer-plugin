@@ -34,6 +34,7 @@ import jetbrains.buildServer.agent.BuildFinishedStatus;
 import jetbrains.buildServer.agent.BuildRunnerContext;
 import jetbrains.buildServer.agent.impl.artifacts.ArtifactsCollection;
 import jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter;
+import jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter.logBuildProblem;
 import jetbrains.buildServer.deployer.agent.UploadInterruptedException;
 import jetbrains.buildServer.log.Loggers;
 import jetbrains.buildServer.util.FileUtil;
@@ -129,7 +130,7 @@ public class SMBJBuildProcessAdapter extends SyncBuildProcessAdapter {
         }
 
       } else {
-        logBuildProblem(myLogger, "Shared resource [" + shareName + "] is not a folder, can not upload files.");
+        SyncBuildProcessAdapter.logBuildProblem(myLogger, "Shared resource [" + shareName + "] is not a folder, can not upload files.");
         return BuildFinishedStatus.FINISHED_FAILED;
       }
 
@@ -142,7 +143,7 @@ public class SMBJBuildProcessAdapter extends SyncBuildProcessAdapter {
       } else {
         message = e.getMessage();
       }
-      logBuildProblem(myLogger, message);
+      SyncBuildProcessAdapter.logBuildProblem(myLogger, message);
 
       LOG.warnAndDebugDetails("Error executing SMB command", e);
       return BuildFinishedStatus.FINISHED_FAILED;
@@ -150,7 +151,7 @@ public class SMBJBuildProcessAdapter extends SyncBuildProcessAdapter {
       myLogger.warning("SMB upload interrupted.");
       return BuildFinishedStatus.FINISHED_FAILED;
     } catch (IOException | SMBRuntimeException e) {
-      logBuildProblem(myLogger, e.getMessage());
+      SyncBuildProcessAdapter.logBuildProblem(myLogger, e.getMessage());
       LOG.warnAndDebugDetails("Error executing SMB command", e);
       return BuildFinishedStatus.FINISHED_FAILED;
     }

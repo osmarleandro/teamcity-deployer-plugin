@@ -25,7 +25,6 @@ import com.jcraft.jsch.SftpException;
 import jetbrains.buildServer.agent.BuildFinishedStatus;
 import jetbrains.buildServer.agent.BuildRunnerContext;
 import jetbrains.buildServer.agent.impl.artifacts.ArtifactsCollection;
-import jetbrains.buildServer.deployer.agent.DeployerAgentUtils;
 import jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter;
 import jetbrains.buildServer.deployer.agent.UploadInterruptedException;
 import jetbrains.buildServer.deployer.agent.ssh.SSHSessionProvider;
@@ -92,11 +91,11 @@ public class SftpBuildProcessAdapter extends SyncBuildProcessAdapter implements 
       myLogger.warning("SFTP upload interrupted.");
       return BuildFinishedStatus.FINISHED_FAILED;
     } catch (JSchException e) {
-      DeployerAgentUtils.logBuildProblem(myLogger, e.getMessage());
+      SyncBuildProcessAdapter.logBuildProblem(myLogger, e.getMessage());
       LOG.warnAndDebugDetails("Error executing SFTP command", e);
       return BuildFinishedStatus.FINISHED_FAILED;
     } catch (SftpException e) {
-      DeployerAgentUtils.logBuildProblem(myLogger, e.getMessage());
+      SyncBuildProcessAdapter.logBuildProblem(myLogger, e.getMessage());
       LOG.warnAndDebugDetails("Error executing SFTP command", e);
       return BuildFinishedStatus.FINISHED_FAILED;
     } finally {

@@ -24,6 +24,7 @@ import jetbrains.buildServer.agent.BuildFinishedStatus;
 import jetbrains.buildServer.agent.BuildRunnerContext;
 import jetbrains.buildServer.agent.impl.artifacts.ArtifactsCollection;
 import jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter;
+import jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter.logBuildProblem;
 import jetbrains.buildServer.deployer.agent.ssh.SSHSessionProvider;
 import jetbrains.buildServer.util.FileUtil;
 import jetbrains.buildServer.util.StringUtil;
@@ -106,11 +107,11 @@ public class ScpProcessAdapter extends SyncBuildProcessAdapter {
 
       return BuildFinishedStatus.FINISHED_SUCCESS;
     } catch (JSchException e) {
-      logBuildProblem(myLogger, e.getMessage());
+      SyncBuildProcessAdapter.logBuildProblem(myLogger, e.getMessage());
       LOG.warnAndDebugDetails("Error executing SCP command", e);
       return BuildFinishedStatus.FINISHED_FAILED;
     } catch (IOException e) {
-      logBuildProblem(myLogger, e.getMessage());
+      SyncBuildProcessAdapter.logBuildProblem(myLogger, e.getMessage());
       LOG.warnAndDebugDetails("Error executing SCP command", e);
       return BuildFinishedStatus.FINISHED_FAILED;
     } finally {
