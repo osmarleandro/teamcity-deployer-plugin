@@ -29,11 +29,12 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.diagnostic.Logger;
 
 public abstract class SyncBuildProcessAdapter extends BuildProcessAdapter {
-  protected static final Logger LOG = Logger.getInstance(CargoBuildProcessAdapter.class.getName());
+  protected  Logger LOG = Logger.getInstance(CargoBuildProcessAdapter.class.getName());
 protected final BuildProgressLogger myLogger;
   private volatile boolean hasFinished;
   private volatile BuildFinishedStatus statusCode;
   private volatile boolean isInterrupted;
+protected String myHost;
 
 
   public SyncBuildProcessAdapter(@NotNull final BuildProgressLogger logger) {

@@ -51,7 +51,6 @@ import java.io.File;
  */
 public class CargoBuildProcessAdapter extends SyncBuildProcessAdapter {
 
-  private final String myHost;
   private final String myPort;
   private final String myUsername;
   private final String myPassword;

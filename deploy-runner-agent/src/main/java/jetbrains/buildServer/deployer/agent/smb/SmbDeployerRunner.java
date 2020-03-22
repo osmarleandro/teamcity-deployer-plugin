@@ -46,9 +46,10 @@ import java.util.Map;
 
 public class SmbDeployerRunner extends ExtractedSuperclass {
 
-  private final File root;
+  protected final File root;
 
-  public SmbDeployerRunner(@NotNull final ExtensionHolder extensionHolder,
+
+public SmbDeployerRunner(@NotNull final ExtensionHolder extensionHolder,
                            @NotNull final PluginDescriptor pluginDescriptor) {
     super(extensionHolder);
     root = pluginDescriptor.getPluginRoot();
