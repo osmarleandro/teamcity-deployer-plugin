@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package jetbrains.buildServer.deployer.agent;
+package jetbrains.buildServer.deployer;
 
 import jetbrains.buildServer.BuildProblemData;
 import jetbrains.buildServer.agent.BuildProgressLogger;
