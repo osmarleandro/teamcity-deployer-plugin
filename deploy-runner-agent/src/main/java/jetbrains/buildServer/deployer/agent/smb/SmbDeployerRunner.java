@@ -27,7 +27,6 @@ import jetbrains.buildServer.agent.BuildRunnerContext;
 import jetbrains.buildServer.agent.impl.artifacts.ArtifactsBuilder;
 import jetbrains.buildServer.agent.impl.artifacts.ArtifactsCollection;
 import jetbrains.buildServer.agent.plugins.beans.PluginDescriptor;
-import jetbrains.buildServer.deployer.agent.base.BaseDeployerRunner;
 import jetbrains.buildServer.deployer.common.DeployerRunnerConstants;
 import jetbrains.buildServer.deployer.common.SMBRunnerConstants;
 import jetbrains.buildServer.serverSide.TeamCityProperties;
@@ -45,7 +44,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-public class SmbDeployerRunner extends BaseDeployerRunner {
+public class SmbDeployerRunner extends ExtractedSuperclass {
 
   private final File root;
 
