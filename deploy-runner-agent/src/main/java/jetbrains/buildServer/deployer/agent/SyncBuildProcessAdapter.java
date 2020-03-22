@@ -16,15 +16,18 @@
 
 package jetbrains.buildServer.deployer.agent;
 
+import com.intellij.openapi.diagnostic.Logger;
 import jetbrains.buildServer.BuildProblemData;
 import jetbrains.buildServer.RunBuildException;
 import jetbrains.buildServer.agent.BuildFinishedStatus;
 import jetbrains.buildServer.agent.BuildProcessAdapter;
 import jetbrains.buildServer.agent.BuildProgressLogger;
+import jetbrains.buildServer.deployer.agent.cargo.CargoBuildProcessAdapter;
 import jetbrains.buildServer.deployer.common.DeployerRunnerConstants;
 import org.jetbrains.annotations.NotNull;
 
 public abstract class SyncBuildProcessAdapter extends BuildProcessAdapter {
+  protected static final Logger LOG = Logger.getInstance(CargoBuildProcessAdapter.class.getName());
   protected final BuildProgressLogger myLogger;
   private volatile boolean hasFinished;
   private volatile BuildFinishedStatus statusCode;
