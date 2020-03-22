@@ -149,7 +149,7 @@ public class ScpProcessAdapter extends SyncBuildProcessAdapter {
           final String destination = filePathEntry.getValue();
           final ScpOperation operationChain = ScpOperationBuilder.getCopyFileOperation(source, destination);
           myInternalLog.debug("Transferring [" + source.getAbsolutePath() + "] to [" + destination + "]");
-          checkIsInterrupted();
+          checkIsInterruptedRenamed();
           operationChain.execute(out, in);
           myInternalLog.debug("done transferring [" + source.getAbsolutePath() + "]");
           count++;

@@ -120,7 +120,7 @@ public class SMBBuildProcessAdapter extends SyncBuildProcessAdapter {
   private int upload(Map<File, String> filePathMap, SmbFile destination) throws IOException {
     int count = 0;
     for (Map.Entry<File, String> fileDestEntry : filePathMap.entrySet()) {
-      checkIsInterrupted();
+      checkIsInterruptedRenamed();
       final File source = fileDestEntry.getKey();
       final String targetPath = fileDestEntry.getValue();
       final SmbFile destDirectory;
@@ -162,7 +162,7 @@ public class SMBBuildProcessAdapter extends SyncBuildProcessAdapter {
     byte[] buf = new byte[STREAM_BUFFER_SIZE];
     int read;
     while ((read = inputStream.read(buf)) > -1) {
-      checkIsInterrupted();
+      checkIsInterruptedRenamed();
       outputStream.write(buf, 0, read);
     }
   }
