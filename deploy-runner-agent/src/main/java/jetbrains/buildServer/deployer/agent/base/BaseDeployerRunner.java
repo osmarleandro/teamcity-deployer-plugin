@@ -40,29 +40,6 @@ public abstract class BaseDeployerRunner implements AgentBuildRunner {
     myExtensionHolder = extensionHolder;
   }
 
-  @NotNull
-  @Override
-  public BuildProcess createBuildProcess(@NotNull final AgentRunningBuild runningBuild,
-                                         @NotNull final BuildRunnerContext context) throws RunBuildException {
-
-    final Map<String, String> runnerParameters = context.getRunnerParameters();
-    final String username = StringUtil.emptyIfNull(runnerParameters.get(DeployerRunnerConstants.PARAM_USERNAME));
-    final String password = StringUtil.emptyIfNull(runnerParameters.get(DeployerRunnerConstants.PARAM_PASSWORD));
-    final String target = StringUtil.emptyIfNull(runnerParameters.get(DeployerRunnerConstants.PARAM_TARGET_URL));
-    final String sourcePaths = runnerParameters.get(DeployerRunnerConstants.PARAM_SOURCE_PATH);
-
-    final Collection<ArtifactsPreprocessor> preprocessors = myExtensionHolder.getExtensions(ArtifactsPreprocessor.class);
-
-    final ArtifactsBuilder builder = new ArtifactsBuilder();
-    builder.setPreprocessors(preprocessors);
-    builder.setBaseDir(runningBuild.getCheckoutDirectory());
-    builder.setArtifactsPaths(sourcePaths);
-
-    final List<ArtifactsCollection> artifactsCollections = builder.build();
-
-    return getDeployerProcess(context, username, password, target, artifactsCollections);
-  }
-
   protected abstract BuildProcess getDeployerProcess(@NotNull final BuildRunnerContext context,
                                                      @NotNull final String username,
                                                      @NotNull final String password,

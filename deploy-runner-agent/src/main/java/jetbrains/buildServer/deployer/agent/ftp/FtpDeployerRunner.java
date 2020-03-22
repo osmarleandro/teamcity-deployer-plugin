@@ -18,14 +18,16 @@ package jetbrains.buildServer.deployer.agent.ftp;
 
 import jetbrains.buildServer.ExtensionHolder;
 import jetbrains.buildServer.RunBuildException;
-import jetbrains.buildServer.agent.AgentBuildRunnerInfo;
-import jetbrains.buildServer.agent.BuildProcess;
-import jetbrains.buildServer.agent.BuildRunnerContext;
+import jetbrains.buildServer.agent.*;
+import jetbrains.buildServer.agent.impl.artifacts.ArtifactsBuilder;
 import jetbrains.buildServer.agent.impl.artifacts.ArtifactsCollection;
 import jetbrains.buildServer.deployer.agent.base.BaseDeployerRunner;
+import jetbrains.buildServer.deployer.common.DeployerRunnerConstants;
 import jetbrains.buildServer.deployer.common.FTPRunnerConstants;
+import jetbrains.buildServer.util.StringUtil;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -62,4 +64,26 @@ public class FtpDeployerRunner extends BaseDeployerRunner {
   }
 
 
+    @NotNull
+    @Override
+    public BuildProcess createBuildProcess(@NotNull final AgentRunningBuild runningBuild,
+                                           @NotNull final BuildRunnerContext context) throws RunBuildException {
+
+      final Map<String, String> runnerParameters = context.getRunnerParameters();
+      final String username = StringUtil.emptyIfNull(runnerParameters.get(DeployerRunnerConstants.PARAM_USERNAME));
+      final String password = StringUtil.emptyIfNull(runnerParameters.get(DeployerRunnerConstants.PARAM_PASSWORD));
+      final String target = StringUtil.emptyIfNull(runnerParameters.get(DeployerRunnerConstants.PARAM_TARGET_URL));
+      final String sourcePaths = runnerParameters.get(DeployerRunnerConstants.PARAM_SOURCE_PATH);
+
+      final Collection<ArtifactsPreprocessor> preprocessors = myExtensionHolder.getExtensions(ArtifactsPreprocessor.class);
+
+      final ArtifactsBuilder builder = new ArtifactsBuilder();
+      builder.setPreprocessors(preprocessors);
+      builder.setBaseDir(runningBuild.getCheckoutDirectory());
+      builder.setArtifactsPaths(sourcePaths);
+
+      final List<ArtifactsCollection> artifactsCollections = builder.build();
+
+      return getDeployerProcess(context, username, password, target, artifactsCollections);
+    }
 }
