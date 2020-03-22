@@ -57,7 +57,7 @@ public class SSHSessionProviderTest extends BaseSSHTest {
     final File tempConfig = createTempFile("Host *\n" +
         "    Port " + testPort + "\n" +
         "    IdentityFile " + myPassphraselessKey.getCanonicalPath());
-    myInternalProperties.put(SSHSessionProvider.TEAMCITY_DEPLOYER_SSH_CONFIG_PATH, tempConfig.getCanonicalPath());
+    myInternalProperties.put(SSHProcessAdapterOptions.TEAMCITY_DEPLOYER_SSH_CONFIG_PATH, tempConfig.getCanonicalPath());
     assertSessionIsConnected();
   }
 
@@ -73,14 +73,14 @@ public class SSHSessionProviderTest extends BaseSSHTest {
             "    IdentityFile " + myPrivateKey.getCanonicalPath()
     );
     myRunnerParams.put(DeployerRunnerConstants.PARAM_TARGET_URL, "foo");
-    myInternalProperties.put(SSHSessionProvider.TEAMCITY_DEPLOYER_SSH_CONFIG_PATH, tempConfig.getCanonicalPath());
+    myInternalProperties.put(SSHProcessAdapterOptions.TEAMCITY_DEPLOYER_SSH_CONFIG_PATH, tempConfig.getCanonicalPath());
     assertSessionIsConnected();
   }
 
   public void testDefaultConfigMissing() throws Exception {
     myRunnerParams.put(SSHRunnerConstants.PARAM_AUTH_METHOD, SSHRunnerConstants.AUTH_METHOD_DEFAULT_KEY);
 
-    myInternalProperties.put(SSHSessionProvider.TEAMCITY_DEPLOYER_SSH_CONFIG_PATH, "some/not/existing/path");
+    myInternalProperties.put(SSHProcessAdapterOptions.TEAMCITY_DEPLOYER_SSH_CONFIG_PATH, "some/not/existing/path");
     myInternalProperties.put(SSHSessionProvider.TEAMCITY_DEPLOYER_SSH_DEFAULT_KEY, myPassphraselessKey.getCanonicalPath());
     assertSessionIsConnected();
   }

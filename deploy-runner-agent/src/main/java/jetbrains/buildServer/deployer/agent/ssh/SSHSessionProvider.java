@@ -40,7 +40,6 @@ import java.io.UnsupportedEncodingException;
 
 public class SSHSessionProvider {
 
-  public static final String TEAMCITY_DEPLOYER_SSH_CONFIG_PATH = "teamcity.deployer.ssh.config.path";
   public static final String TEAMCITY_DEPLOYER_SSH_DEFAULT_KEY = "teamcity.deployer.ssh.default.key";
 
   private final Logger myLog = Logger.getLogger(this.getClass());
@@ -97,7 +96,7 @@ public class SSHSessionProvider {
 
     myLog.debug("Initializing ssh session.");
     if (SSHRunnerConstants.AUTH_METHOD_DEFAULT_KEY.equals(authMethod)) {
-      final String configPath = holder.getInternalProperty(TEAMCITY_DEPLOYER_SSH_CONFIG_PATH, System.getProperty("user.home") + File.separator + ".ssh" + File.separator + "config");
+      final String configPath = holder.getInternalProperty(SSHProcessAdapterOptions.TEAMCITY_DEPLOYER_SSH_CONFIG_PATH, System.getProperty("user.home") + File.separator + ".ssh" + File.separator + "config");
       //noinspection ConstantConditions
       final File config = new File(configPath);
       if (config.exists()) {

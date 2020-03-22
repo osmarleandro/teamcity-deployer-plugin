@@ -17,7 +17,8 @@
 package jetbrains.buildServer.deployer.agent.ssh;
 
 class SSHProcessAdapterOptions {
-  private boolean myFailBuildOnExitCode;
+    public static final String TEAMCITY_DEPLOYER_SSH_CONFIG_PATH = "teamcity.deployer.ssh.config.path";
+    private boolean myFailBuildOnExitCode;
   private boolean myEnableSshAgentForwarding;
 
   SSHProcessAdapterOptions(boolean myFailBuildOnExitCode, boolean myEnableSshAgentForwarding) {
