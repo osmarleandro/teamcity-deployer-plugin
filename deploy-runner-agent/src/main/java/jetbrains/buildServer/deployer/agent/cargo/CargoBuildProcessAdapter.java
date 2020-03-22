@@ -16,7 +16,6 @@
 
 package jetbrains.buildServer.deployer.agent.cargo;
 
-import com.intellij.openapi.diagnostic.Logger;
 import jetbrains.buildServer.agent.BuildFinishedStatus;
 import jetbrains.buildServer.agent.BuildRunnerContext;
 import jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter;
@@ -51,8 +50,6 @@ import java.io.File;
  * date: 25.06.2014.
  */
 public class CargoBuildProcessAdapter extends SyncBuildProcessAdapter {
-
-  private static final Logger LOG = Logger.getInstance(CargoBuildProcessAdapter.class.getName());
 
   private final String myHost;
   private final String myPort;
