@@ -166,9 +166,7 @@ public class SmbDeployerRunner extends BaseDeployerRunner {
       final Collection<ArtifactsPreprocessor> preprocessors = myExtensionHolder.getExtensions(ArtifactsPreprocessor.class);
 
       final ArtifactsBuilder builder = new ArtifactsBuilder();
-      builder.setPreprocessors(preprocessors);
-      builder.setBaseDir(runningBuild.getCheckoutDirectory());
-      builder.setArtifactsPaths(sourcePaths);
+      extracted(runningBuild, sourcePaths, preprocessors, builder);
 
       final List<ArtifactsCollection> artifactsCollections = builder.build();
 

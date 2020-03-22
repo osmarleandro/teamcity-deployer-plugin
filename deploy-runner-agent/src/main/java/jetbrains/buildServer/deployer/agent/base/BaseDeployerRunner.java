@@ -49,4 +49,10 @@ public abstract class BaseDeployerRunner implements AgentBuildRunner {
   @NotNull
   @Override
   public abstract AgentBuildRunnerInfo getRunnerInfo();
+
+  protected void extracted(@NotNull AgentRunningBuild runningBuild, String sourcePaths, Collection<ArtifactsPreprocessor> preprocessors, ArtifactsBuilder builder) {
+    builder.setPreprocessors(preprocessors);
+    builder.setBaseDir(runningBuild.getCheckoutDirectory());
+    builder.setArtifactsPaths(sourcePaths);
+  }
 }

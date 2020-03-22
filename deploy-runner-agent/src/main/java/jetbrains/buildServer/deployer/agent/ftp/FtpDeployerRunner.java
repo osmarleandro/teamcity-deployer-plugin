@@ -85,9 +85,4 @@ public class FtpDeployerRunner extends BaseDeployerRunner {
       return getDeployerProcess(context, username, password, target, artifactsCollections);
     }
 
-  private void extracted(@NotNull AgentRunningBuild runningBuild, String sourcePaths, Collection<ArtifactsPreprocessor> preprocessors, ArtifactsBuilder builder) {
-    builder.setPreprocessors(preprocessors);
-    builder.setBaseDir(runningBuild.getCheckoutDirectory());
-    builder.setArtifactsPaths(sourcePaths);
-  }
 }
