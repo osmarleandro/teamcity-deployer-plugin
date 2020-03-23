@@ -20,5 +20,5 @@ import jetbrains.buildServer.BuildProblemData;
 import jetbrains.buildServer.agent.BuildProgressLogger;
 import jetbrains.buildServer.deployer.common.DeployerRunnerConstants;
 
-public class DeployerAgentUtils {
+public class DeployerAgentUtils extends ExtractedSuperclass {
 }
