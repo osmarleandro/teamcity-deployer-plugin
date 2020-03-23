@@ -19,7 +19,7 @@ package jetbrains.buildServer.deployer;
 import jetbrains.buildServer.agent.BuildProgressLogger;
 import jetbrains.buildServer.deployer.agent.SyncBuildProcessAdapter;
 
-public class DeployerAgentUtils {
+public class DeployerAgentUtils extends ExtractedSuperclass {
   /**
  * @deprecated Use {@link SyncBuildProcessAdapter#logBuildProblem(BuildProgressLogger,String)} instead
  */
